@@ -185,12 +185,12 @@
         var _setUpListeners = function () {
           _mainElement.addEventListener('click', _controlClick);
 		  if (_isTouchDevice()) {
-            _mainElement.addEventListener('touchstart', function (e) {
-              _startX = e.changedTouches[0].clientX;
+            _mainElement.addEventListener('mousedown', function (e) {
+              _startX = e.clientX;
             });
-            _mainElement.addEventListener('touchend', function (e) {
+            _mainElement.addEventListener('mouseup', function (e) {
               var
-                _endX = e.changedTouches[0].clientX,
+                _endX = e.clientX,
                 _deltaX = _endX - _startX;
               if (_deltaX > 50) {
                 _transformItem('left');
