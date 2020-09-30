@@ -184,7 +184,7 @@
         };
         var _setUpListeners = function () {
           _mainElement.addEventListener('click', _controlClick);
-		  if (_isTouchDevice()) {
+		  
 			  alert(1111);
             _mainElement.addEventListener('touchstart', function (e) {
               _startX = e.changedTouches[0].clientX;
@@ -199,9 +199,9 @@
                 _transformItem('right');
               }
             });
-          }else {
+          
 			  _mainElement.addEventListener('wheel', _mouseWheelControl);
-		  }
+		  
           if (_config.pause && _config.isCycling) {
             _mainElement.addEventListener('mouseenter', function () {
               clearInterval(_interval);
