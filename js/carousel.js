@@ -106,7 +106,6 @@
 
         var _transformItem = function (direction) {
           var nextItem;
-		  alert(_isTouchDevice());
           if (!_isElementVisible(_mainElement) && !_isTouchDevice()) {
             return;
           }
