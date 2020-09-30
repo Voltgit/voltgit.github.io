@@ -212,6 +212,11 @@
             });
           }
           document.addEventListener('visibilitychange', _handleVisibilityChange, false);
+		  var supportsOrientationChange = "onorientationchange" in window,
+			orientationEvent = supportsOrientationChange ? "orientationchange" : "resize";
+		  window.addEventListener(orientationEvent, function() {
+			alert('HOLY ROTATING SCREENS BATMAN:' + window.orientation + " " + screen.width);
+			}, false);
           window.addEventListener('resize', function () {
             var
               _index = 0,
