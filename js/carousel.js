@@ -106,7 +106,7 @@
 
         var _transformItem = function (direction) {
           var nextItem;
-          if (!_isElementVisible(_mainElement)) {
+          if (!_isElementVisible(_mainElement) && !_isTouchDevice()) {
             return;
           }
           if (direction === 'right') {
