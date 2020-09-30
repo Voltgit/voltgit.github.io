@@ -212,7 +212,10 @@
             });
           }
           document.addEventListener('visibilitychange', _handleVisibilityChange, false);
-          window.addEventListener('resize', function () {
+		  var supportsOrientationChange = "onorientationchange" in window,
+		  orientationEvent = supportsOrientationChange ? "orientationchange" : "resize";
+
+		  window.addEventListener(orientationEvent, function() {
             var
               _index = 0,
               width = parseFloat(document.body.clientWidth);
@@ -225,7 +228,7 @@
               _setActive();
               _refresh();
             }
-          });
+          }, false);
         }
 		//Прокутка колёсиком мыши
 		function _mouseWheelControl(event){
