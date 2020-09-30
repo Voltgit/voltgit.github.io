@@ -31,6 +31,7 @@
           _transform = 0, // значение транфсофрмации .slider_wrapper
           _step = _itemWidth / _wrapperWidth * 100, // величина шага (для трансформации)
           _items = [], // массив элементов
+		  _startX = 0,
           _interval = 0,
           _html = _mainElement.innerHTML,
           _states = [
@@ -184,7 +185,7 @@
         };
         var _setUpListeners = function () {
           _mainElement.addEventListener('click', _controlClick);
-		  
+		  //if (_isTouchDevice()) {
             _mainElement.addEventListener('mousedown', function (e) {
               _startX = e.clientX;
             });
@@ -198,9 +199,9 @@
                 _transformItem('right');
               }
             });
-          
+          //}else {
 			  _mainElement.addEventListener('wheel', _mouseWheelControl);
-		  
+		  //}
           if (_config.pause && _config.isCycling) {
             _mainElement.addEventListener('mouseenter', function () {
               clearInterval(_interval);
