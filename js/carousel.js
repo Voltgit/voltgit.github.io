@@ -185,13 +185,13 @@
         };
         var _setUpListeners = function () {
           _mainElement.addEventListener('click', _controlClick);
-		  //if (_isTouchDevice()) {
-            _mainElement.addEventListener('mousedown', function (e) {
-              _startX = e.clientX;
+		  if (_isTouchDevice()) {
+            _mainElement.addEventListener('touchstart', function (e) {
+              _startX = e.changedTouches[0].clientX;
             });
-            _mainElement.addEventListener('mouseup', function (e) {
+            _mainElement.addEventListener('touchend', function (e) {
               var
-                _endX = e.clientX,
+                _endX = e.changedTouches[0].clientX,
                 _deltaX = _endX - _startX;
               if (_deltaX > 50) {
                 _transformItem('left');
@@ -199,9 +199,9 @@
                 _transformItem('right');
               }
             });
-          //}else {
+          }else {
 			  _mainElement.addEventListener('wheel', _mouseWheelControl);
-		  //}
+		  }
           if (_config.pause && _config.isCycling) {
             _mainElement.addEventListener('mouseenter', function () {
               clearInterval(_interval);
