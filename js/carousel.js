@@ -164,7 +164,7 @@ var _refresh;
           }
         }
 
-        _refresh = function () {
+        var _refresh = function () {
           clearInterval(_interval);
           _mainElement.innerHTML = _html;
           _sliderWrapper = _mainElement.querySelector('.slider__wrapper');
@@ -256,6 +256,9 @@ var _refresh;
           right: function () { // метод right
             _transformItem('right');
           },
+		  refresh: function () { // метод refresh
+            _refresh();
+          },
           left: function () { // метод left
             _transformItem('left');
           },
@@ -275,15 +278,24 @@ var _refresh;
 
     var slider=multiItemSlider('.slider_cars',{});
     var slider=multiItemSlider('.slider_reviews',{});
-    var slider=multiItemSlider('.slider_practice',{});
+    var slider1=multiItemSlider('.slider_practice',{});
 	//отслеживания нажатия на радиокнопку
+	const btn1 = document.querySelector('#tab-btn-tone');
+	btn1.onclick = function () {
+		if(!slider1){
+		slider1=multiItemSlider('.slider_practice',{});
+		}else{
+		slider1.refresh();
+		}
+		
+	};
     var slider2;
-	const btn = document.querySelector('#tab-btn-ttwo');
-	btn.onclick = function () {
+	const btn2 = document.querySelector('#tab-btn-ttwo');
+	btn2.onclick = function () {
 		if(!slider2){
 		slider2=multiItemSlider('.slider_theory',{});
 		}else{
-			_refresh();
+		slider2.refresh();
 		}
 		
 	};
