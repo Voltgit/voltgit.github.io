@@ -2,7 +2,6 @@ $(document).ready(function(){
 	$(".menu_button").click(function(){
 		$(".menu_button").toggleClass("menu_button_active"); return false;
 	});
-});
 $(document).ready(function(){
 	$(".menu_button").click(function(){
 		$(".nav_mob").toggleClass("nav_mob_active"); return false;

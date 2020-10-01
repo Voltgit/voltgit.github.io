@@ -36,7 +36,8 @@
           _html = _mainElement.innerHTML,
           _states = [
             { active: false, minWidth: 0, count: 1 },
-            { active: false, minWidth: 980, count: 2 }
+			{ active: false, minWidth: 699, count: 2 },
+			{ active: false, minWidth: 899, count: 3 },
           ],
           _config = {
             isCycling: false, // автоматическая смена слайдов
@@ -121,12 +122,14 @@
           }
           if (direction === 'left') {
             _positionLeftItem--;
+			//console.log(position.getMin());
             if (_positionLeftItem < position.getMin()) {
               nextItem = position.getItemMax();
               _items[nextItem].position = position.getMin() - 1;
               _items[nextItem].transform -= _items.length * 100;
               _items[nextItem].item.style.transform = 'translateX(' + _items[nextItem].transform + '%)';
             }
+			console.log(_itemWidth + ' / ' + _wrapperWidth + ' = ' + _step);
             _transform += _step;
           }
           _sliderWrapper.style.transform = 'translateX(' + _transform + '%)';
@@ -212,18 +215,18 @@
             });
           }
           document.addEventListener('visibilitychange', _handleVisibilityChange, false);
-		  var supportsOrientationChange = "onorientationchange" in window,
-		  orientationEvent = supportsOrientationChange ? "orientationchange" : "resize";
+		  var supportsOrientationChange = "onorientationchange" in window;
+		  var orientationEvent = supportsOrientationChange ? "orientationchange" : "resize";
 
 		  window.addEventListener(orientationEvent, function() {
-            var
+			var
               _index = 0,
               width = parseFloat(document.body.clientWidth);
             _states.forEach(function (item, index, arr) {
               if (width >= _states[index].minWidth)
                 _index = index;
             });
-			_refresh();
+			//_refresh();
             if (_index !== _getActive()) {
               _setActive();
               _refresh();
@@ -279,8 +282,7 @@
 	const btn = document.querySelector('#tab-btn-ttwo');
 	btn.onclick = function () {
 		//Если не инициализирована
-		if(!slider2){
+		slider2 = null;
 		//инициализировать слайдер Теория
 		slider2=multiItemSlider('.slider_theory',{});
-		}
 	};
