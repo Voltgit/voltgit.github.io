@@ -281,8 +281,9 @@
     var slider2;
 	const btn = document.querySelector('#tab-btn-ttwo');
 	btn.onclick = function () {
-		//Если не инициализирована
-		slider2 = null;
-		//инициализировать слайдер Теория
 		slider2=multiItemSlider('.slider_theory',{});
+	};
+	const btn2 = document.querySelector('#tab-btn-tone');
+	btn.onclick = function () {
+		slider=multiItemSlider('.slider_practice',{});
 	};
