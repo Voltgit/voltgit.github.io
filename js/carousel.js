@@ -219,7 +219,7 @@
 		  var orientationEvent = supportsOrientationChange ? "orientationchange" : "resize";
 
 		  window.addEventListener(orientationEvent, function() {
-			if(!_isTouchDevice)alert(1);
+			console.log(orientationEvent);
 			var
               _index = 0,
               width = parseFloat(document.body.clientWidth);
