@@ -36,8 +36,8 @@
           _html = _mainElement.innerHTML,
           _states = [
             { active: false, minWidth: 0, count: 1 },
-			{ active: false, minWidth: 699, count: 2 },
-			{ active: false, minWidth: 899, count: 3 },
+			{ active: false, minWidth: 699 - 16, count: 2 },
+			{ active: false, minWidth: 899 - 16, count: 3 },
           ],
           _config = {
             isCycling: false, // автоматическая смена слайдов
@@ -129,8 +129,7 @@
               _items[nextItem].transform -= _items.length * 100;
               _items[nextItem].item.style.transform = 'translateX(' + _items[nextItem].transform + '%)';
             }
-			//console.log(_itemWidth + ' / ' + _wrapperWidth + ' = ' + _step);
-			console.log(_mainElement);
+			console.log(_itemWidth + ' / ' + _wrapperWidth + ' = ' + _step);
             _transform += _step;
           }
           _sliderWrapper.style.transform = 'translateX(' + _transform + '%)';
@@ -220,7 +219,7 @@
 		  var orientationEvent = supportsOrientationChange ? "orientationchange" : "resize";
 
 		  window.addEventListener(orientationEvent, function() {
-			if(_isTouchDevice)alert(1);
+			if(!_isTouchDevice)alert(1);
 			var
               _index = 0,
               width = parseFloat(document.body.clientWidth);
@@ -254,7 +253,6 @@
           _cycle(_config.direction);
         }
         _setActive();
-
         return {
           right: function () { // метод right
             _transformItem('right');
