@@ -129,7 +129,8 @@
               _items[nextItem].transform -= _items.length * 100;
               _items[nextItem].item.style.transform = 'translateX(' + _items[nextItem].transform + '%)';
             }
-			console.log(_itemWidth + ' / ' + _wrapperWidth + ' = ' + _step);
+			//console.log(_itemWidth + ' / ' + _wrapperWidth + ' = ' + _step);
+			console.log(_mainElement);
             _transform += _step;
           }
           _sliderWrapper.style.transform = 'translateX(' + _transform + '%)';
@@ -219,6 +220,7 @@
 		  var orientationEvent = supportsOrientationChange ? "orientationchange" : "resize";
 
 		  window.addEventListener(orientationEvent, function() {
+			if(_isTouchDevice)alert(1);
 			var
               _index = 0,
               width = parseFloat(document.body.clientWidth);
@@ -281,9 +283,7 @@
     var slider2;
 	const btn = document.querySelector('#tab-btn-ttwo');
 	btn.onclick = function () {
+		if(!slider2){
 		slider2=multiItemSlider('.slider_theory',{});
-	};
-	const btn2 = document.querySelector('#tab-btn-tone');
-	btn.onclick = function () {
-		slider=multiItemSlider('.slider_practice',{});
+		}
 	};
