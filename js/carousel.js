@@ -219,7 +219,7 @@
 		  var orientationEvent = supportsOrientationChange ? "orientationchange" : "resize";
 
 		  window.addEventListener(orientationEvent, function() {
-			console.log(orientationEvent);
+			alert(orientationEvent);
 			var
               _index = 0,
               width = parseFloat(document.body.clientWidth);
