@@ -1,4 +1,5 @@
 'use strict';
+var _refresh;
     var multiItemSlider = (function () {
 
       function _isElementVisible(element) {
@@ -122,14 +123,12 @@
           }
           if (direction === 'left') {
             _positionLeftItem--;
-			//console.log(position.getMin());
             if (_positionLeftItem < position.getMin()) {
               nextItem = position.getItemMax();
               _items[nextItem].position = position.getMin() - 1;
               _items[nextItem].transform -= _items.length * 100;
               _items[nextItem].item.style.transform = 'translateX(' + _items[nextItem].transform + '%)';
             }
-			console.log(_itemWidth + ' / ' + _wrapperWidth + ' = ' + _step);
             _transform += _step;
           }
           _sliderWrapper.style.transform = 'translateX(' + _transform + '%)';
@@ -165,7 +164,7 @@
           }
         }
 
-        var _refresh = function () {
+        _refresh = function () {
           clearInterval(_interval);
           _mainElement.innerHTML = _html;
           _sliderWrapper = _mainElement.querySelector('.slider__wrapper');
@@ -283,5 +282,8 @@
 	btn.onclick = function () {
 		if(!slider2){
 		slider2=multiItemSlider('.slider_theory',{});
+		}else{
+			_refresh();
 		}
+		
 	};
